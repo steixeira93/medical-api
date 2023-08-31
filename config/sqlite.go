@@ -1,14 +1,14 @@
 package config
 
 import (
+	"medical-api/schemas"
 	"os"
 
-	"github.com/steixeira93/medical-api/schemas"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
-func InitialzeSqlite() (*gorm.DB, error) {
+func InitializeSqlite() (*gorm.DB, error) {
 	logger := GetLogger("sqlite")
 	dbPath := "./db/main.db"
 
@@ -35,7 +35,7 @@ func InitialzeSqlite() (*gorm.DB, error) {
 		return nil, err
 	}
 	//Migrate thhe Scema
-	err = db.AutoMigrate( &schemas.medicalSchedule{})
+	err = db.AutoMigrate( &schemas.Appointment{})
 	if err != nil {
 		logger.Errorf("sqlite migration error: %v", err)
 		return nil, err

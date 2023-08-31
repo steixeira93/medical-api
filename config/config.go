@@ -8,12 +8,12 @@ import (
 
 var (
 	db *gorm.DB
-	logger *logger
+	logger *Logger
 )
 
 func Init() error {
 	var err error
-	db, err := InitializeSqlite()
+	db, err = InitializeSqlite()
 
 	if err != nil {
 		return fmt.Errorf("failed to initialize database: %v", err)

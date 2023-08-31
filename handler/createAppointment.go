@@ -1,11 +1,15 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 func CreateAppointment(c *gin.Context) {
 	request := CreateAppointmentRequest{}
 
-	ctx.BindJSON(&request)
+	c.BindJSON(&request)
 
 	// validate request
 	if err := request.validate(); err != nil {
